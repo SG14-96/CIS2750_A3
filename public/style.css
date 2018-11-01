@@ -1,0 +1,18 @@
+.main{
+    padding-top: 50px;
+    padding-bottom: 25px;
+    padding-left: 150px;
+    padding-right: 150px;
+}
+.table-wrapper-scroll-y {
+    display: block;
+    max-height: 500px;
+    overflow-y: auto;
+    -ms-overflow-style: -ms-autohiding-scrollbar;
+}
+.scrollable_text_output{
+    display: block;
+    max-height: 500px;
+    overflow-y: auto;
+    -ms-overflow-style: -ms-autohiding-scrollbar;
+}
