@@ -1,6 +1,9 @@
+$(document).ready(function () {
+    // load data from file.
+});
 //upload new file to the server
 $('#uploadFileNow').on('click', function () {
-    var newData = new FormData($('#textfile'));
+    let newData = new FormData($('#textfile'));
 
     $.ajax({
         type: "POST",
@@ -15,10 +18,22 @@ $('#uploadFileNow').on('click', function () {
     });
 });
 
+function populateFileView() {
+    let vcardDataJSON;
+    $.ajax({
+        type: "GET",
+        url: "url",
+        data: "String",
+        dataType: "json",
+        success: function (data) {
+            vcardDataJSON = data;
+        }
+    });
+}
 //get card data from server
 function populateFileView() {
-    var filetable = document.getElementById('filelogview_items');
-    var dataFromServer;
+    let filetable = document.getElementById('filelogview_items');
+    let dataFromServer;
     $.ajax({
         url: "url", // replace this with correct url
         data: "String",
@@ -33,7 +48,10 @@ function populateFileView() {
     }
 }
 
+function writeToStatusPanel() {
+    //
+}
 //download card file from server
-function getCardFile() {
+function donwloadFile() {
     //
 }
