@@ -1,16 +1,23 @@
 $(document).ready(function () {
-    // load data from file.
+    populateFileView();
+    populateCardView();
 });
 //upload new file to the server
-$('#uploadFileNow').on('click', function () {
-    let newData = new FormData($('#textfile'));
-
-    $.ajax({
-        type: "POST",
-        url: "url",//change to ip for Node server
-        data: newData,
-        success: function (data) {
-            $('#output').html(data);
+$('#uploadFileNow').on('click', function (e) {
+    e.preventDefault();
+    var form = e.target;
+    var newData = new FormData(form);
+    $.post({
+        type: 'POST',
+        url: 'http://localhost:8080/upload',//change to ip for Node server
+        data: JSON.stringify(newData),
+        dataType: 'json',
+        contentType: 'application/json',
+        success: function () {
+            document.getElementById('status_panel').innerHTML = "Uploaded new file";
+        },
+        fail: function (){
+            alert("Could not upload file.\n");
         },
         cache:false,
         contentType:false,
@@ -21,34 +28,34 @@ $('#uploadFileNow').on('click', function () {
 function populateFileView() {
     let vcardDataJSON;
     $.ajax({
-        type: "GET",
-        url: "url",
+        type: 'GET',
+        url: 'http://localhost:8080/getVCardSummaries',
         data: "String",
         dataType: "json",
         success: function (data) {
             vcardDataJSON = data;
+            console.log(vcardDataJSON);
+            $(".filelogview_items").append(" <tr><th>VCardTest.vcf</th><td>Simon Perrault</td><td>15</td></tr> ");
         }
     });
 }
 //get card data from server
-function populateFileView() {
+function populateCardView() {
     let filetable = document.getElementById('filelogview_items');
     let dataFromServer;
     $.ajax({
-        url: "url", // replace this with correct url
+        url: "http://localhost:8080/getVCardProps", // replace this with correct url
         data: "String",
         dataType: "json",
         success: function (data) {
             dataFromServer = data;
+            console.log(dataFromServer);
+            $(".cardview_items").append("<tr><th>1</th><td>FN</td><td>Simon Perrault</td></tr>");
         }
     });
-
-    for(card in dataFromServer){
-        console.log(card);
-    }
 }
 
-function writeToStatusPanel() {
+function writeToStatusPanel(toBeWritten) {
     //
 }
 //download card file from server

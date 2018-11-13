@@ -1,5 +1,6 @@
 'use strict'
-
+// nodejs helper functions
+const fileHandler = require('fs');
 // C library API
 const ffi = require('ffi');
 
@@ -68,13 +69,23 @@ app.get('/uploads/:name', function(req , res){
   });
 });
 
-//******************** Your code goes here ******************** 
-
+//******************** Your code goes here ********************
+/*
+let vCardParserLib = ffi.Library('./parser', {
+  'vCardSummary': [ 'string', ['string'] ],
+});
+*/
 //Sample endpoint
-app.get('/someendpoint', function(req , res){
-  res.send({
-    foo: "bar"
+app.get('/getVCardSummaries', function(req , res){
+  const vcardFilesDir = './uploads';
+  fileHandler.readdirSync(vcardFilesDir).forEach(file =>{
+    console.log(file);
   });
+  res.send("[{\"filename\":\"test1.vcf\",\"FN\":\"John SMith\",\"numprops\":15},{\"filename\":\"test2.vcf\",\"FN\":\"Mike Smith\",\"numprops\":10},{\"filename\":\"test3.vcf\",\"FN\":\"Chad Smith\",\"numprops\":0}]");
+});
+
+app.get('/getVCardProps', function(req, res){
+  res.send("[{\"FN\":\"Mike Anderson\",\"ADDR\":\"100 Address Way, Guelph, Ontario, Canada\"}]");
 });
 
 app.listen(portNum);
