@@ -12,11 +12,11 @@ else ifeq ($(UNAME_S), Linux)
     LIB := sharedLib.so
 endif
 
-$(LIB): sharedLib.o
-	$(CC) -shared -o $(LIB) sharedLib.o
+$(LIB): LinkedListAPI.o parsingUtilities.o VCardParser.o
+	$(CC) -shared -o $(LIB) LinkedListAPI.o parsingUtilities.o VCardParser.o
 
-sharedLib.o: sharedLib.c
-	$(CC) $(CFLAGS) -c -fpic sharedLib.c
+sharedLib.o: src/LinkedListAPI.c src/parsingUtilities.c src/VCardParser.c
+	$(CC) $(CFLAGS) src/LinkedListAPI.c src/parsingUtilities.c src/VCardParser.c -Iinclude -c -fpic
 
 clean:
 	rm $(LIB) *.o

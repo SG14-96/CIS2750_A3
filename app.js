@@ -1,5 +1,6 @@
 'use strict'
 // nodejs helper functions
+const parser = require('./node_modules/vcard-parser');
 const fileHandler = require('fs');
 // C library API
 const ffi = require('ffi');
@@ -70,22 +71,39 @@ app.get('/uploads/:name', function(req , res){
 });
 
 //******************** Your code goes here ********************
-/*
-let vCardParserLib = ffi.Library('./parser', {
-  'vCardSummary': [ 'string', ['string'] ],
-});
-*/
-//Sample endpoint
 app.get('/getVCardSummaries', function(req , res){
   const vcardFilesDir = './uploads';
+  var JSONToReturn = [];
   fileHandler.readdirSync(vcardFilesDir).forEach(file =>{
-    console.log(file);
+    var newEntry = {};
+    if(file.includes(".vcf")){
+      newEntry.filename = file;
+      let summaryJSONStr = parser.parse(fileHandler.readFileSync(vcardFilesDir+"/"+file, 'utf8'));
+      newEntry.name = summaryJSONStr.fn[0].value;
+      newEntry.numprops = getNumProps(summaryJSONStr) - 2;
+      JSONToReturn.push(newEntry);
+    }
   });
-  res.send("[{\"filename\":\"test1.vcf\",\"FN\":\"John SMith\",\"numprops\":15},{\"filename\":\"test2.vcf\",\"FN\":\"Mike Smith\",\"numprops\":10},{\"filename\":\"test3.vcf\",\"FN\":\"Chad Smith\",\"numprops\":0}]");
+  res.send(JSONToReturn);
 });
 
-app.get('/getVCardProps', function(req, res){
-  res.send("[{\"FN\":\"Mike Anderson\",\"ADDR\":\"100 Address Way, Guelph, Ontario, Canada\"}]");
+function getNumProps(json) {
+  var counter = 0;
+  for(var prop in json){
+    counter++;
+  }
+  return counter;
+}
+
+
+app.get('/getVCardProps/:filename', function(req, res){
+  var fileName = req.params.filename;
+  const vcardFilesDir = './uploads';
+
+  fileHandler.readFile(vcardFilesDir+"/"+fileName, 'utf8', function(err, contents) {
+    let summaryJSONStr = parser.parse(contents);
+    res.send(summaryJSONStr);
+  });
 });
 
 app.listen(portNum);

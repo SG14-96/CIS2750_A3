@@ -18,7 +18,7 @@
 </head>
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
     <a class="navbar-brand" href="#">
-        <img src="assets/Contacts v2.ico" width="30" height="30" alt="">
+        <img src="../public/assets/Contacts v2.ico" width="30" height="30" alt="">
         Vcard Interface
     </a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -33,7 +33,6 @@
                 <a class="nav-link btn" data-toggle="modal" data-target="#file_upload_modal" >Upload file</a>
             </li>
         </ul>
-        <p style="color:white;">Server IP-->localhost</p>
     </div>
 </nav>
 <body>
@@ -41,7 +40,7 @@
         <!--file log view-->
         <div class="table-wrapper-scroll-y">
             <h3>FileLog</h3>
-            <table class="table table-striped table-dark" id="file_log_table">
+            <table class="table table-striped table-dark">
                 <thead>
                 <tr>
                     <th scope="col">Filename (Click to download)</th>
@@ -49,31 +48,34 @@
                     <th scope="col">Optional Properties</th>
                 </tr>
                 </thead>
-                <tbody id="filelogview_items">
-                    <!--rows od data goe here-->
+                <tbody id="file_log_items">
+                    <!--Data goes here.-->
                 </tbody>
             </table>
         </div>
         <!--cardview secitons-->
+        <h3>Cardview Panel</h3>
+        <div class='dropdown'>
+                <button class='btn btn-primary dropdown-toggle' type='button' data-toggle='dropdown'>View Files<span class='caret'></span></button>
+               <ul class='dropdown-menu' id='dropMenu'>
+                <!--lol-->
+               </ul> 
+             </div>
         <div class="table-wrapper-scroll-y">
-            <h3>Cardview Panel</h3>
             <table class="table table-striped table-dark" id="card_view_panel">
                 <thead>
                 <tr>
-                    <th scope="col">Property</th>
-                    <th scope="col">Name</th>
-                    <th scope="col">Values</th>
+                    <th data-field="property"  scope="col">Property</th>
+                    <th data-field="name"  scope="col">Name</th>
+                    <th data-field="values"  scope="col">Values</th>
                 </tr>
                 </thead>
-                <tbody id="cardview_items">
-                    <!--rows of card properties go here-->
-                </tbody>
             </table>
         </div>
         <!--Status view panel-->
         <h3>Status Panel</h3>
         <div class="scrollable_text_output" id="status_panel">
-           <!--status output goes here-->
+           <!--ouput-->
         </div>
     </div>
     <!--How to use site modal-->
@@ -142,10 +144,6 @@
     </div>
     <!-- scripts-->
     <script type="text/javascript" src="index.js"></script>
-    <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 </body>
 </html>
 
