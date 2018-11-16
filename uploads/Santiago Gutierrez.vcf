@@ -1,0 +1,19 @@
+BEGIN:VCARD
+VERSION:3.0
+PRODID:-//Apple Inc.//Mac OS X 10.13.6//EN
+N:Gutierrez;Santiago;;;
+FN:Santiago Gutierrez
+ORG:Lendr Inc.;
+TITLE:Software Engineer
+EMAIL;type=INTERNET;type=HOME;type=pref:santigutierrez14@icloud.com
+item1.EMAIL;type=INTERNET:gutierrs@uoguelph.ca
+item1.X-ABLabel:_$!<Other>!$_
+TEL;type=CELL;type=VOICE;type=pref:+12269722346
+TEL;type=HOME;type=VOICE:+15199540707
+ADR;type=HOME;type=pref:;;109 Ashberry Place;Waterloo;Ontario;N2T1G8;Canada
+ADR:;;;Waterloo\, Ontario\, Canada;;;
+X-SOCIALPROFILE;type=linkedin;x-userid=354385548;x-displayname=Santiago Gutierrez:https://www.linkedin.com/profile/view?id=santiago-gutierrez-2908249a&trk=tardis-contact
+BDAY:1996-06-13
+PHOTO;ENCODING=b;TYPE=JPEG:/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAMCAgMCAgMDAwMEAwMEBQgFBQQEBQoHBwYIDAoMDAsKCwsNDhIQDQ4RDgsLEBYQERMUFRUVDA8XGBYUGBIUFRT/2wBDAQMEBAUEBQkFBQkUDQsNFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBT/wAARCABkAGQDASIAAhEBAxEB/8QAHQAAAQQDAQEAAAAAAAAAAAAABgAFBw
+X-ABUID:19A3686D-133E-4372-AFF9-C7EA44ACCFB7
+END:VCARD

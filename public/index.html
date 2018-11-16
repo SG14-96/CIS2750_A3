@@ -55,12 +55,14 @@
         </div>
         <!--cardview secitons-->
         <h3>Cardview Panel</h3>
-        <div class='dropdown'>
-                <button class='btn btn-primary dropdown-toggle' type='button' data-toggle='dropdown'>View Files<span class='caret'></span></button>
-               <ul class='dropdown-menu' id='dropMenu'>
-                <!--lol-->
-               </ul> 
-             </div>
+        <div class="dropdown">
+            <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
+              Select a file to view
+            </button>
+            <div class="dropdown-menu" id="card_view_menu">
+              <!--menu items-->
+            </div>
+        </div> 
         <div class="table-wrapper-scroll-y">
             <table class="table table-striped table-dark" id="card_view_panel">
                 <thead>
@@ -74,8 +76,10 @@
         </div>
         <!--Status view panel-->
         <h3>Status Panel</h3>
+        <button class="btn btn-primary" id="clearBTN">Clear</button>
         <div class="scrollable_text_output" id="status_panel">
            <!--ouput-->
+           <p id="status_output_p"></p>
         </div>
     </div>
     <!--How to use site modal-->
@@ -128,17 +132,11 @@
                 </button>
             </div>
             <div class="modal-body">
-                <form id="textfile" enctype="multipart/form-data" method="post" name="textfile">
-                    <div class="form-group">
-                        <label >Example file input</label>
-                        <input id="newvcarduploadfile" type="file" class="form-control-file" acccetp="*.vcf" name="file">
-                    </div>
+                <form id="uploadForm" enctype="multipart/form-data" method="post" action="/upload">
+                    <input type="file" name="uploadFile" accept=".vcf" />
+                    <input type="submit" value="Upload File" name="submit">
+                    <!-- <span id = "status"></span> -->
                 </form>
-            </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary" id="uploadFileNow">Upload File</button>
-                </div>
             </div>
         </div>
     </div>
